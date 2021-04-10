@@ -62,10 +62,6 @@
     <bpmn:endEvent id="Event_06rn2dk" name="Food delivered">
       <bpmn:incoming>Flow_19wuykp</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:manualTask id="Activity_05cn1j7" name="Accept Payment and give food to customer">
-      <bpmn:incoming>Flow_0fu16ua</bpmn:incoming>
-      <bpmn:outgoing>Flow_19wuykp</bpmn:outgoing>
-    </bpmn:manualTask>
     <bpmn:manualTask id="Activity_0dhdixx" name="Prepare Food">
       <bpmn:incoming>Flow_0wh2nhe</bpmn:incoming>
       <bpmn:outgoing>Flow_1qzhwf3</bpmn:outgoing>
@@ -82,6 +78,10 @@
     <bpmn:sequenceFlow id="Flow_1qzhwf3" sourceRef="Activity_0dhdixx" targetRef="Gateway_0mi0in0" />
     <bpmn:sequenceFlow id="Flow_0fu16ua" sourceRef="Activity_03imswy" targetRef="Activity_05cn1j7" />
     <bpmn:sequenceFlow id="Flow_19wuykp" sourceRef="Activity_05cn1j7" targetRef="Event_06rn2dk" />
+    <bpmn:manualTask id="Activity_05cn1j7" name="Accept Payment and give food to customer">
+      <bpmn:incoming>Flow_0fu16ua</bpmn:incoming>
+      <bpmn:outgoing>Flow_19wuykp</bpmn:outgoing>
+    </bpmn:manualTask>
     <bpmn:manualTask id="Activity_03imswy" name="Drive to destination">
       <bpmn:incoming>Flow_1x7ta1u</bpmn:incoming>
       <bpmn:outgoing>Flow_0fu16ua</bpmn:outgoing>
@@ -154,10 +154,10 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0fu16ua_di" bpmnElement="Flow_0fu16ua">
         <di:waypoint x="1760" y="920" />
-        <di:waypoint x="2010" y="920" />
+        <di:waypoint x="1960" y="920" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19wuykp_di" bpmnElement="Flow_19wuykp">
-        <di:waypoint x="2110" y="920" />
+        <di:waypoint x="2060" y="920" />
         <di:waypoint x="2262" y="920" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_1kjy2yp_di" bpmnElement="StartEvent_1">
@@ -199,14 +199,14 @@
           <dc:Bounds x="2244" y="945" width="73" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1oe0reh_di" bpmnElement="Activity_05cn1j7">
-        <dc:Bounds x="2010" y="880" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_19m7crd_di" bpmnElement="Activity_0dhdixx">
         <dc:Bounds x="940" y="580" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1kdiqgc_di" bpmnElement="Activity_03imswy">
         <dc:Bounds x="1660" y="880" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1oe0reh_di" bpmnElement="Activity_05cn1j7">
+        <dc:Bounds x="1960" y="880" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
