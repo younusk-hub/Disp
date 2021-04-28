@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
-  <bpmn:process id="DispBPM" name="DispBPM" isExecutable="true">
+  <bpmn:process id="DispBPM2" name="DispBPM2" isExecutable="true">
     <bpmn:startEvent id="Event_08l3f02" name="Process&#10;started">
       <bpmn:outgoing>Flow_0amme3z</bpmn:outgoing>
     </bpmn:startEvent>
@@ -11,7 +11,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Activity_0gwf1u4" name="Print Order not accepted" camunda:class="com.camunda.myBPM.DispBPM.LoggerDelegate">
       <bpmn:incoming>Flow_0t0ni5l</bpmn:incoming>
-      <bpmn:outgoing>Flow_01it6gp</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0r6rn6h</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Activity_0ezk7wg" name="Accept order" camunda:class="com.camunda.myBPM.DispBPM.AcceptOrderDelegate">
       <bpmn:incoming>Flow_0amme3z</bpmn:incoming>
@@ -21,7 +21,7 @@
       <bpmn:incoming>Flow_0nu9j93</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:endEvent id="Event_15yh441" name="Process ended">
-      <bpmn:incoming>Flow_01it6gp</bpmn:incoming>
+      <bpmn:incoming>Flow_0r6rn6h</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0amme3z" sourceRef="Event_08l3f02" targetRef="Activity_0ezk7wg" />
     <bpmn:sequenceFlow id="Flow_1mwnbuq" sourceRef="Activity_0ezk7wg" targetRef="Gateway_0v1yohn" />
@@ -58,26 +58,22 @@
     <bpmn:sequenceFlow id="Flow_1ee0bin" sourceRef="Activity_15bd6i0" targetRef="Activity_0zvi33b" />
     <bpmn:sequenceFlow id="Flow_0nu9j93" sourceRef="Activity_155gnqs" targetRef="Event_0ny4m9f" />
     <bpmn:sequenceFlow id="Flow_003v6n7" sourceRef="Activity_0zvi33b" targetRef="Event_041xnt5" />
-    <bpmn:sequenceFlow id="Flow_01it6gp" sourceRef="Activity_0gwf1u4" targetRef="Event_15yh441" />
-    <bpmn:task id="Activity_0ss8jkw" name="checkout">
-      <bpmn:incoming>Flow_1du611r</bpmn:incoming>
-      <bpmn:outgoing>Flow_1oqmpai</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_155gnqs" name="Order confirmed">
+    <bpmn:userTask id="Activity_155gnqs" name="Order confirmed">
       <bpmn:incoming>Flow_0c748or</bpmn:incoming>
       <bpmn:outgoing>Flow_0nu9j93</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:task id="Activity_0zvi33b" name="Order not confirmed">
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_0zvi33b" name="Order not confirmed">
       <bpmn:incoming>Flow_1ee0bin</bpmn:incoming>
       <bpmn:outgoing>Flow_003v6n7</bpmn:outgoing>
-    </bpmn:task>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0r6rn6h" sourceRef="Activity_0gwf1u4" targetRef="Event_15yh441" />
+    <bpmn:userTask id="Activity_0ss8jkw" name="checkout2">
+      <bpmn:incoming>Flow_1du611r</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oqmpai</bpmn:outgoing>
+    </bpmn:userTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="DispBPM">
-      <bpmndi:BPMNEdge id="Flow_01it6gp_di" bpmnElement="Flow_01it6gp">
-        <di:waypoint x="760" y="110" />
-        <di:waypoint x="1162" y="110" />
-      </bpmndi:BPMNEdge>
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="DispBPM2">
       <bpmndi:BPMNEdge id="Flow_003v6n7_di" bpmnElement="Flow_003v6n7">
         <di:waypoint x="1980" y="210" />
         <di:waypoint x="2362" y="210" />
@@ -138,6 +134,10 @@
         <di:waypoint x="198" y="360" />
         <di:waypoint x="320" y="360" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r6rn6h_di" bpmnElement="Flow_0r6rn6h">
+        <di:waypoint x="760" y="110" />
+        <di:waypoint x="1162" y="110" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Event_08l3f02_di" bpmnElement="Event_08l3f02">
         <dc:Bounds x="162" y="342" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -186,14 +186,14 @@
       <bpmndi:BPMNShape id="Activity_1373gsl_di" bpmnElement="Activity_15bd6i0">
         <dc:Bounds x="1610" y="170" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ss8jkw_di" bpmnElement="Activity_0ss8jkw">
-        <dc:Bounds x="760" y="410" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_155gnqs_di" bpmnElement="Activity_155gnqs">
+      <bpmndi:BPMNShape id="Activity_0cam37c_di" bpmnElement="Activity_155gnqs">
         <dc:Bounds x="1760" y="560" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0zvi33b_di" bpmnElement="Activity_0zvi33b">
+      <bpmndi:BPMNShape id="Activity_0m5c0rp_di" bpmnElement="Activity_0zvi33b">
         <dc:Bounds x="1880" y="170" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1t87847_di" bpmnElement="Activity_0ss8jkw">
+        <dc:Bounds x="760" y="410" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
