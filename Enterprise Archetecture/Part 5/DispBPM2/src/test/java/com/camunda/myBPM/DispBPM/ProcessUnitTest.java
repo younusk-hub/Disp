@@ -59,7 +59,8 @@ public class ProcessUnitTest {
   public void testCurrentStatus() {
 	  
 	// Obtain test run of BPMN
-	ProcessInstanceWithVariables processInstance = (ProcessInstanceWithVariables) processEngine().getRuntimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY);
+	ProcessInstanceWithVariables processInstance = (ProcessInstanceWithVariables) 
+	processEngine().getRuntimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY);
 
 	// Obtain the value of the PaymentOK variable
 		boolean PaymentOK = (boolean) processInstance.getVariables().get("PaymentOK");
@@ -84,10 +85,7 @@ public class ProcessUnitTest {
   public void testCompletionOftask() {
   		
   	// Obtain test run of BPMN
-  	ProcessInstanceWithVariables processInstance = 
-           (ProcessInstanceWithVariables) processEngine()	
-  .getRuntimeService()
-  .startProcessInstanceByKey(PROCESS_DEFINITION_KEY);
+  	ProcessInstanceWithVariables processInstance = (ProcessInstanceWithVariables) processEngine().getRuntimeService().startProcessInstanceByKey(PROCESS_DEFINITION_KEY);
 
   	// Obtain a reference to the current task
   	TaskAssert taskAssert = 
